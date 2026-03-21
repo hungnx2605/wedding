@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -:*)",
+      "Bash(python -:*)",
+      "Bash(powershell -Command \"Select-String -Path ''c:\\\\Users\\\\hungt\\\\OneDrive\\\\Máy tính\\\\wedding\\\\wedding.html'' -Pattern ''wedding.js''\")",
+      "WebFetch(domain:wedding.truongvathom.online)",
+      "Bash(curl -s \"https://wedding.truongvathom.online/\")",
+      "Bash(powershell -Command \":*)"
+    ]
+  }
+}

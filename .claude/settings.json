@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -X PUT \"https://api.jsonbin.io/v3/b/69be3e5cc3097a1dd5458eae\" -H \"Content-Type: application/json\" -H \"X-Master-Key: $2a$10$IYBkxQE/HV6s948xpTc14.nXZ1qbBvf/uxxptpZj3QcwWNUFIynVe\" -d \"[]\")",
+      "Bash(curl -X PUT \"https://api.jsonbin.io/v3/b/69be3e5cc3097a1dd5458eae\" -H \"Content-Type: application/json\" -H 'X-Master-Key: $2a$10$IYBkxQE/HV6s948xpTc14.nXZ1qbBvf/uxxptpZj3QcwWNUFIynVe' -d '[]')",
+      "Bash(curl -X PUT \"https://api.jsonbin.io/v3/b/69be3e5cc3097a1dd5458eae\" -H \"Content-Type: application/json\" -H 'X-Master-Key: $2a$10$IYBkxQE/HV6s948xpTc14.nXZ1qbBvf/uxxptpZj3QcwWNUFIynVe' -d '{}')",
+      "Bash(curl -X PUT \"https://api.jsonbin.io/v3/b/69be3e5cc3097a1dd5458eae\" -H \"Content-Type: application/json\" -H 'X-Master-Key: $2a$10$IYBkxQE/HV6s948xpTc14.nXZ1qbBvf/uxxptpZj3QcwWNUFIynVe' --data-raw '[{\"\"init\"\":true}]')"
+    ]
+  }
+}
