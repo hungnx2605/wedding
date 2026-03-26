@@ -43,8 +43,8 @@ toggleBtn.addEventListener('click', (e) => {
 // ===== CALENDAR =====
 (function renderCalendar() {
     const grid = document.getElementById('calendar-grid');
-    const year = 2026, month = 3;
-    const highlightDays = [16, 17];
+    const year = 2026, month = 4;
+    const highlightDays = [11, 12];
     const dowsVi = ['T2','T3','T4','T5','T6','T7','CN'];
     const heartSrc = 'https://content.pancake.vn/1/59/9d/0d/23/829a2a25903e5b03a029f62911ad0300b2c875df84e143b3258f9633-w:3600-h:3600-l:165926-t:image/png.png';
 
@@ -106,24 +106,54 @@ function closeModal(id) {
 }
 
 // ===== LIGHTBOX =====
-const lightboxSrcs = [
-    'assets/images/album-full/_MID4876.webp',
-    'assets/images/album-full/_MID4814.webp',
-    'assets/images/album-full/_MID4522%20%2060x90.webp',
-    'assets/images/album-full/_MID4635.webp',
-    'assets/images/album-full/_MID4780.webp',
-    'assets/images/album-full/_MID4909%20%2060x90.webp',
-    'assets/images/album-full/_MID4946.webp',
-    'assets/images/album-full/_MID5269.webp',
-    'assets/images/album-full/_MID5281.webp',
-    'assets/images/album-full/_MID5288.webp',
-    'assets/images/album-full/_MID5295.webp',
-    'assets/images/album-full/_MID5425.webp',
-    'assets/images/album-full/_MID5484.webp',
-    'assets/images/album-full/_MID5515.webp',
-    'assets/images/album-full/_MID5553.webp',
-    'assets/images/album-full/_MID5594.webp'
+const allAlbumImages = [
+    'assets/images/randomImage/DSC_6487.jpg',
+    'assets/images/randomImage/DSC_6500.jpg',
+    'assets/images/randomImage/DSC_6513.jpg',
+    'assets/images/randomImage/DSC_6516.jpg',
+    'assets/images/randomImage/DSC_6530.jpg',
+    'assets/images/randomImage/DSC_6533.jpg',
+    'assets/images/randomImage/DSC_6552.jpg',
+    'assets/images/randomImage/DSC_6562.jpg',
+    'assets/images/randomImage/DSC_6607.jpg',
+    'assets/images/randomImage/DSC_6706.jpg',
+    'assets/images/randomImage/DSC_6741.jpg',
+    'assets/images/randomImage/DSC_6782.jpg',
+    'assets/images/randomImage/DSC_6792.jpg',
+    'assets/images/randomImage/DSC_6845.jpg',
+    'assets/images/randomImage/DSC_6885.jpg',
+    'assets/images/randomImage/DSC_6898.jpg',
+    'assets/images/randomImage/DSC_6931.jpg',
+    'assets/images/randomImage/DSC_6942.jpg',
+    'assets/images/randomImage/DSC_6981.jpg',
+    'assets/images/randomImage/DSC_7038.jpg',
+    'assets/images/randomImage/DSC_7079.jpg',
+    'assets/images/randomImage/DSC_7173.jpg',
+    'assets/images/randomImage/DSC_7181.jpg',
+    'assets/images/randomImage/DSC_7202.jpg',
 ];
+
+(function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+})(allAlbumImages);
+
+const lightboxSrcs = allAlbumImages.slice(0, 16);
+
+(function buildAlbumGrids() {
+    const container = document.getElementById('album-grids-container');
+    let html = '';
+    for (let i = 0; i < 16; i += 2) {
+        html += `<div class="album-grid">
+            <img class="album-photo animate-on-scroll a-fadeInLeft" src="${lightboxSrcs[i]}" alt="Wedding Photo ${i + 1}" loading="lazy" onclick="openLightbox(${i})"/>
+            <img class="album-photo animate-on-scroll a-fadeInRight" src="${lightboxSrcs[i + 1]}" alt="Wedding Photo ${i + 2}" loading="lazy" onclick="openLightbox(${i + 1})"/>
+        </div>`;
+    }
+    container.innerHTML = html;
+    container.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+})();
 let lbIndex = 0;
 let lbTouchStartX = 0;
 let lbNavigating = false;
@@ -479,7 +509,39 @@ function _getDeviceInfo() {
                   : /Chrome/i.test(ua) ? 'Chrome'
                   : /Firefox/i.test(ua) ? 'Firefox'
                   : /Safari/i.test(ua) ? 'Safari' : 'Unknown';
-    return { device, os, browser };
+
+    // Device model name
+    let model = 'Unknown';
+    if (/iPhone/i.test(ua)) {
+        const m = ua.match(/iPhone OS ([\d_]+)/i);
+        const ver = m ? parseInt(m[1].split('_')[0]) : 0;
+        if      (ver >= 18) model = 'iPhone 16 series';
+        else if (ver >= 17) model = 'iPhone 15 series';
+        else if (ver >= 16) model = 'iPhone 14 series';
+        else if (ver >= 15) model = 'iPhone 13 series';
+        else if (ver >= 14) model = 'iPhone 12 series';
+        else if (ver >= 13) model = 'iPhone 11 series';
+        else if (ver >= 12) model = 'iPhone XS/XR';
+        else if (ver >= 11) model = 'iPhone X/8';
+        else if (ver >= 10) model = 'iPhone 7';
+        else if (ver >= 9)  model = 'iPhone 6s/SE';
+        else if (ver >= 8)  model = 'iPhone 6';
+        else                model = 'iPhone (cũ)';
+    } else if (/iPad/i.test(ua)) {
+        model = 'iPad';
+    } else if (/Android/i.test(ua)) {
+        const m = ua.match(/\(Linux;.*?;\s*([^)]+?)\s+Build\//i)
+               || ua.match(/Android[^;]*;\s*([^)]+)\)/i);
+        model = m ? m[1].trim() : 'Android Device';
+    } else if (/Windows NT/i.test(ua)) {
+        const m = ua.match(/Windows NT ([\d.]+)/i);
+        const ver = m ? m[1] : '';
+        model = ver === '10.0' ? 'Windows 10/11 PC' : ver === '6.3' ? 'Windows 8.1 PC' : 'Windows PC';
+    } else if (/Macintosh/i.test(ua)) {
+        model = 'Mac';
+    }
+
+    return { device, os, browser, model };
 }
 
 async function trackVisit() {
