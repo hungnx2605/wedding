@@ -20,12 +20,12 @@ function startMusic() {
 // Auto play on first user interaction (including scroll)
 const firstInteraction = () => {
   if (!isPlaying) startMusic();
-  ["click", "touchstart", "keydown", "scroll", "wheel", "touchmove"].forEach(
+  ["click", "keydown", "scroll", "wheel", "touchmove"].forEach(
     (e) => document.removeEventListener(e, firstInteraction),
   );
   window.removeEventListener("scroll", firstInteraction);
 };
-["click", "touchstart", "keydown", "wheel", "touchmove"].forEach((e) =>
+["click", "keydown", "wheel", "touchmove"].forEach((e) =>
   document.addEventListener(e, firstInteraction, { once: true }),
 );
 window.addEventListener("scroll", firstInteraction, { once: true });
@@ -118,31 +118,32 @@ function closeModal(id) {
 }
 
 // ===== LIGHTBOX =====
+const CDN = "https://cdn.jsdelivr.net/gh/hungnx2605/wedding@main/";
 const allAlbumImages = [
-  "assets/images/webp/DSC_6487.webp",
-  "assets/images/webp/DSC_6500.webp",
-  "assets/images/webp/DSC_6513.webp",
-  "assets/images/webp/DSC_6516.webp",
-  "assets/images/webp/DSC_6530.webp",
-  "assets/images/webp/DSC_6533.webp",
-  "assets/images/webp/DSC_6552.webp",
-  "assets/images/webp/DSC_6562.webp",
-  "assets/images/webp/DSC_6607.webp",
-  "assets/images/webp/DSC_6706.webp",
-  "assets/images/webp/DSC_6741.webp",
-  "assets/images/webp/DSC_6782.webp",
-  "assets/images/webp/DSC_6792.webp",
-  "assets/images/webp/DSC_6845.webp",
-  "assets/images/webp/DSC_6885.webp",
-  "assets/images/webp/DSC_6898.webp",
-  "assets/images/webp/DSC_6931.webp",
-  "assets/images/webp/DSC_6942.webp",
-  "assets/images/webp/DSC_6981.webp",
-  "assets/images/webp/DSC_7038.webp",
-  "assets/images/webp/DSC_7079.webp",
-  "assets/images/webp/DSC_7173.webp",
-  "assets/images/webp/DSC_7181.webp",
-  "assets/images/webp/DSC_7202.webp",
+  CDN + "assets/images/webp/DSC_6487.webp",
+  CDN + "assets/images/webp/DSC_6500.webp",
+  CDN + "assets/images/webp/DSC_6513.webp",
+  CDN + "assets/images/webp/DSC_6516.webp",
+  CDN + "assets/images/webp/DSC_6530.webp",
+  CDN + "assets/images/webp/DSC_6533.webp",
+  CDN + "assets/images/webp/DSC_6552.webp",
+  CDN + "assets/images/webp/DSC_6562.webp",
+  CDN + "assets/images/webp/DSC_6607.webp",
+  CDN + "assets/images/webp/DSC_6706.webp",
+  CDN + "assets/images/webp/DSC_6741.webp",
+  CDN + "assets/images/webp/DSC_6782.webp",
+  CDN + "assets/images/webp/DSC_6792.webp",
+  CDN + "assets/images/webp/DSC_6845.webp",
+  CDN + "assets/images/webp/DSC_6885.webp",
+  CDN + "assets/images/webp/DSC_6898.webp",
+  CDN + "assets/images/webp/DSC_6931.webp",
+  CDN + "assets/images/webp/DSC_6942.webp",
+  CDN + "assets/images/webp/DSC_6981.webp",
+  CDN + "assets/images/webp/DSC_7038.webp",
+  CDN + "assets/images/webp/DSC_7079.webp",
+  CDN + "assets/images/webp/DSC_7173.webp",
+  CDN + "assets/images/webp/DSC_7181.webp",
+  CDN + "assets/images/webp/DSC_7202.webp",
 ];
 
 (function shuffle(arr) {
