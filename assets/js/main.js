@@ -20,12 +20,12 @@ function startMusic() {
 // Auto play on first user interaction (including scroll)
 const firstInteraction = () => {
   if (!isPlaying) startMusic();
-  ["click", "keydown", "scroll", "wheel", "touchmove"].forEach(
+  ["click", "touchstart", "keydown", "scroll", "wheel", "touchmove"].forEach(
     (e) => document.removeEventListener(e, firstInteraction),
   );
   window.removeEventListener("scroll", firstInteraction);
 };
-["click", "keydown", "wheel", "touchmove"].forEach((e) =>
+["click", "touchstart", "keydown", "wheel", "touchmove"].forEach((e) =>
   document.addEventListener(e, firstInteraction, { once: true }),
 );
 window.addEventListener("scroll", firstInteraction, { once: true });
