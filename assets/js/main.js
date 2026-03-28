@@ -107,30 +107,30 @@ function closeModal(id) {
 
 // ===== LIGHTBOX =====
 const allAlbumImages = [
-    'assets/images/webp/DSC_6487.webp',
-    'assets/images/webp/DSC_6500.webp',
-    'assets/images/webp/DSC_6513.webp',
-    'assets/images/webp/DSC_6516.webp',
-    'assets/images/webp/DSC_6530.webp',
-    'assets/images/webp/DSC_6533.webp',
-    'assets/images/webp/DSC_6552.webp',
-    'assets/images/webp/DSC_6562.webp',
-    'assets/images/webp/DSC_6607.webp',
-    'assets/images/webp/DSC_6706.webp',
-    'assets/images/webp/DSC_6741.webp',
-    'assets/images/webp/DSC_6782.webp',
-    'assets/images/webp/DSC_6792.webp',
-    'assets/images/webp/DSC_6845.webp',
-    'assets/images/webp/DSC_6885.webp',
-    'assets/images/webp/DSC_6898.webp',
-    'assets/images/webp/DSC_6931.webp',
-    'assets/images/webp/DSC_6942.webp',
-    'assets/images/webp/DSC_6981.webp',
-    'assets/images/webp/DSC_7038.webp',
-    'assets/images/webp/DSC_7079.webp',
-    'assets/images/webp/DSC_7173.webp',
-    'assets/images/webp/DSC_7181.webp',
-    'assets/images/webp/DSC_7202.webp',
+    'https://cdn.jsdelivr.net/gh/hungnx2605/wedding@main/assets/images/webp/DSC_6487.webp',
+    'https://cdn.jsdelivr.net/gh/hungnx2605/wedding@main/assets/images/webp/DSC_6500.webp',
+    'https://cdn.jsdelivr.net/gh/hungnx2605/wedding@main/assets/images/webp/DSC_6513.webp',
+    'https://cdn.jsdelivr.net/gh/hungnx2605/wedding@main/assets/images/webp/DSC_6516.webp',
+    'https://cdn.jsdelivr.net/gh/hungnx2605/wedding@main/assets/images/webp/DSC_6530.webp',
+    'https://cdn.jsdelivr.net/gh/hungnx2605/wedding@main/assets/images/webp/DSC_6533.webp',
+    'https://cdn.jsdelivr.net/gh/hungnx2605/wedding@main/assets/images/webp/DSC_6552.webp',
+    'https://cdn.jsdelivr.net/gh/hungnx2605/wedding@main/assets/images/webp/DSC_6562.webp',
+    'https://cdn.jsdelivr.net/gh/hungnx2605/wedding@main/assets/images/webp/DSC_6607.webp',
+    'https://cdn.jsdelivr.net/gh/hungnx2605/wedding@main/assets/images/webp/DSC_6706.webp',
+    'https://cdn.jsdelivr.net/gh/hungnx2605/wedding@main/assets/images/webp/DSC_6741.webp',
+    'https://cdn.jsdelivr.net/gh/hungnx2605/wedding@main/assets/images/webp/DSC_6782.webp',
+    'https://cdn.jsdelivr.net/gh/hungnx2605/wedding@main/assets/images/webp/DSC_6792.webp',
+    'https://cdn.jsdelivr.net/gh/hungnx2605/wedding@main/assets/images/webp/DSC_6845.webp',
+    'https://cdn.jsdelivr.net/gh/hungnx2605/wedding@main/assets/images/webp/DSC_6885.webp',
+    'https://cdn.jsdelivr.net/gh/hungnx2605/wedding@main/assets/images/webp/DSC_6898.webp',
+    'https://cdn.jsdelivr.net/gh/hungnx2605/wedding@main/assets/images/webp/DSC_6931.webp',
+    'https://cdn.jsdelivr.net/gh/hungnx2605/wedding@main/assets/images/webp/DSC_6942.webp',
+    'https://cdn.jsdelivr.net/gh/hungnx2605/wedding@main/assets/images/webp/DSC_6981.webp',
+    'https://cdn.jsdelivr.net/gh/hungnx2605/wedding@main/assets/images/webp/DSC_7038.webp',
+    'https://cdn.jsdelivr.net/gh/hungnx2605/wedding@main/assets/images/webp/DSC_7079.webp',
+    'https://cdn.jsdelivr.net/gh/hungnx2605/wedding@main/assets/images/webp/DSC_7173.webp',
+    'https://cdn.jsdelivr.net/gh/hungnx2605/wedding@main/assets/images/webp/DSC_7181.webp',
+    'https://cdn.jsdelivr.net/gh/hungnx2605/wedding@main/assets/images/webp/DSC_7202.webp',
 ];
 
 (function shuffle(arr) {
@@ -464,10 +464,11 @@ document.querySelectorAll('.modal-overlay').forEach(overlay => {
 
         setTimeout(function() {
             overlay.classList.add('slide-open');
+            overlay.style.pointerEvents = 'none';
+            document.body.style.overflow = '';
 
             setTimeout(function() {
                 overlay.classList.add('done');
-                document.body.style.overflow = '';
             }, 1050);
         }, 200);
     }, 1400);
