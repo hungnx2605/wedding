@@ -542,6 +542,8 @@ body {
     transform 0.2s,
     box-shadow 0.2s;
   margin: 5px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 .btn-rsvp:hover {
   transform: translateY(-2px);

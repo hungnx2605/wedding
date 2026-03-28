@@ -107,7 +107,9 @@ document
 
 // ===== MODAL FUNCTIONS =====
 function openModal(id) {
-  document.getElementById(id).classList.add("active");
+  const el = document.getElementById(id);
+  el.classList.add("active");
+  void el.offsetWidth; // force Safari repaint
   document.body.style.overflow = "hidden";
 }
 function closeModal(id) {
@@ -511,12 +513,19 @@ document.querySelectorAll(".modal-overlay").forEach((overlay) => {
 
     setTimeout(function () {
       overlay.classList.add("slide-open");
-      overlay.style.pointerEvents = "none";
       document.body.style.overflow = "";
 
-      setTimeout(function () {
+      var doneTimer = setTimeout(function () {
         overlay.classList.add("done");
-      }, 1050);
+      }, 1100);
+      overlay.querySelector(".intro-left").addEventListener(
+        "transitionend",
+        function () {
+          clearTimeout(doneTimer);
+          overlay.classList.add("done");
+        },
+        { once: true }
+      );
     }, 200);
   }, 1400);
 })();
